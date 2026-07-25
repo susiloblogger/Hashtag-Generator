@@ -4,9 +4,10 @@ import { Utensils, Shirt, Compass, Dumbbell, TrendingUp, Smartphone, GraduationC
 
 interface PresetSelectorProps {
   onSelectPreset: (preset: PresetTopic) => void;
+  activePresetId?: string | null;
 }
 
-export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset }) => {
+export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset, activePresetId }) => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'Utensils': return <Utensils className="w-4 h-4 text-amber-500" />;
@@ -34,26 +35,36 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset }
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-        {PRESET_TOPICS.map((preset) => (
-          <button
-            key={preset.id}
-            type="button"
-            onClick={() => onSelectPreset(preset)}
-            className="flex flex-col items-start p-3 bg-white hover:bg-indigo-50/50 border border-slate-200/90 hover:border-indigo-300 rounded-xl text-left transition-all group shadow-2xs hover:shadow-xs"
-          >
-            <div className="flex items-center gap-2 mb-1.5 w-full">
-              <div className="p-1.5 rounded-lg bg-slate-100 group-hover:bg-white transition-colors">
-                {getIcon(preset.iconName)}
+        {PRESET_TOPICS.map((preset) => {
+          const isActive = activePresetId === preset.id;
+          return (
+            <button
+              key={preset.id}
+              type="button"
+              onClick={() => onSelectPreset(preset)}
+              className={`flex flex-col items-start p-3 rounded-xl border text-left transition-all group cursor-pointer ${
+                isActive 
+                  ? 'bg-indigo-50 border-indigo-500 text-indigo-950 font-medium shadow-2xs' 
+                  : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+              }`}
+            >
+              <div className="flex items-center justify-between mb-1.5 w-full">
+                <div className="flex items-center gap-2 truncate">
+                  <div className={`p-1.5 rounded-lg transition-colors shrink-0 ${isActive ? 'bg-indigo-100/50' : 'bg-slate-100 group-hover:bg-white'}`}>
+                    {getIcon(preset.iconName)}
+                  </div>
+                  <span className={`text-xs font-bold truncate ${isActive ? 'text-indigo-700' : 'text-slate-800'}`}>
+                    {preset.name}
+                  </span>
+                </div>
+                {isActive && <span className="w-2 h-2 rounded-full bg-indigo-600 shrink-0 ml-1" />}
               </div>
-              <span className="text-xs font-semibold text-slate-800 group-hover:text-indigo-900 truncate">
-                {preset.name}
-              </span>
-            </div>
-            <p className="text-[11px] text-slate-500 line-clamp-2 leading-snug">
-              {preset.description}
-            </p>
-          </button>
-        ))}
+              <p className="text-[11px] text-slate-500 line-clamp-2 leading-snug">
+                {preset.description}
+              </p>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

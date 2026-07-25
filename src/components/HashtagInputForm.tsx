@@ -39,6 +39,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
   const [image, setImage] = useState<{ data: string; mimeType: string } | null>(null);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showPresets, setShowPresets] = useState(true);
+  const [selectedPresetId, setSelectedPresetId] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -50,6 +51,8 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
       alert('Ukuran gambar terlalu besar. Maksimal 10MB.');
       return;
     }
+
+    setSelectedPresetId(null);
 
     const reader = new FileReader();
     reader.onload = () => {
@@ -74,6 +77,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
     setPromptText(preset.prompt);
     setNiche(preset.niche);
     setPlatform(preset.platform);
+    setSelectedPresetId(preset.id);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -152,7 +156,10 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
 
       {/* Preset Topics Section */}
       {showPresets && (
-        <PresetSelector onSelectPreset={handleSelectPreset} />
+        <PresetSelector 
+          onSelectPreset={handleSelectPreset} 
+          activePresetId={selectedPresetId}
+        />
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -168,7 +175,10 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
                 <button
                   key={p.id}
                   type="button"
-                  onClick={() => setPlatform(p.id)}
+                  onClick={() => {
+                    setPlatform(p.id);
+                    setSelectedPresetId(null);
+                  }}
                   className={`flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl font-semibold text-xs sm:text-sm transition-all border cursor-pointer ${
                     isSelected
                       ? 'border-indigo-600 bg-indigo-50 text-indigo-700 shadow-2xs font-bold'
@@ -193,7 +203,10 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
             <div className="relative">
               <textarea
                 value={promptText}
-                onChange={(e) => setPromptText(e.target.value)}
+                onChange={(e) => {
+                  setPromptText(e.target.value);
+                  setSelectedPresetId(null);
+                }}
                 placeholder="e.g. coffee shop marketing, resep masakan simpel, fotografi HP, OOTD pantai Bali..."
                 rows={4}
                 className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 min-h-[110px] resize-none shadow-inner placeholder:text-slate-400 transition-all outline-hidden"
@@ -297,7 +310,10 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
             </label>
             <select
               value={niche}
-              onChange={(e) => setNiche(e.target.value)}
+              onChange={(e) => {
+                setNiche(e.target.value);
+                setSelectedPresetId(null);
+              }}
               className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:outline-hidden focus:border-indigo-500"
             >
               {POPULAR_NICHES.map((n) => (
