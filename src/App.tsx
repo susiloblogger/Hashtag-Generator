@@ -6,6 +6,7 @@ import { SingleHashtagAnalyzer } from './components/SingleHashtagAnalyzer';
 import { SavedSetsManager } from './components/SavedSetsManager';
 import { GeneratorOptions, GenerationResult, Platform, SavedHashtagSet } from './types';
 import { Sparkles, Hash, Zap, AlertCircle, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [result, setResult] = useState<GenerationResult | null>(null);
@@ -88,6 +89,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white pb-16">
+      <Analytics />
       {/* Header */}
       <Header
         savedCount={savedSets.length}
