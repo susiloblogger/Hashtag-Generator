@@ -9,7 +9,7 @@ interface AdBannerProps {
 
 export const AdBanner: React.FC<AdBannerProps> = ({
   className = '',
-  dataAdSlot = 'XXXXXXXXXX', // Ganti dengan ID Ad Slot asli Anda
+  dataAdSlot = '4551494805', // Ganti dengan ID Ad Slot asli Anda
   dataAdFormat = 'auto',
   dataFullWidthResponsive = 'true',
 }) => {
@@ -34,7 +34,7 @@ export const AdBanner: React.FC<AdBannerProps> = ({
       <ins
         className="adsbygoogle"
         style={{ display: 'block', width: '100%' }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXX" // Ganti dengan Publisher ID asli Anda
+        data-ad-client="ca-pub-3320154792890380"
         data-ad-slot={dataAdSlot}
         data-ad-format={dataAdFormat}
         data-full-width-responsive={dataFullWidthResponsive}
