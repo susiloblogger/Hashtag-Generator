@@ -6,6 +6,7 @@ import { SingleHashtagAnalyzer } from './components/SingleHashtagAnalyzer';
 import { SavedSetsManager } from './components/SavedSetsManager';
 import { GeneratorOptions, GenerationResult, Platform, SavedHashtagSet } from './types';
 import { Sparkles, Hash, Zap, AlertCircle, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { AdBanner } from './components/AdBanner';
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -103,6 +104,8 @@ export default function App() {
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 space-y-8">
+        {/* Top Ad Banner (Posisi A) */}
+        <AdBanner className="mb-4" />
         {/* Error Notification */}
         {error && (
           <div className="bg-rose-50 border border-rose-200 text-rose-800 p-4 rounded-2xl flex items-start gap-3 shadow-xs animate-in fade-in">
@@ -134,6 +137,9 @@ export default function App() {
             />
           </div>
         )}
+
+        {/* Bottom Ad Banner (Posisi C) */}
+        <AdBanner className="mt-8 mb-4" />
       </main>
 
       {/* Single Hashtag Analyzer Modal */}
