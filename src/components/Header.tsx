@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex flex-col justify-center">
             <div className="flex items-center gap-1 sm:gap-1.5">
               <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
-                TagMaster<span className="text-indigo-600">AI</span>
+                Tagar<span className="text-indigo-600">AI</span>
               </span>
               <span className="inline-flex items-center gap-0.5 text-[9px] sm:text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60 px-1.5 sm:px-2 py-0.5 rounded-full uppercase tracking-wider">
                 <Sparkles className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-indigo-500" /> Pro

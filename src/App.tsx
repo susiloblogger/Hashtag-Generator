@@ -9,6 +9,7 @@ import { Sparkles, Hash, Zap, AlertCircle, TrendingUp, CheckCircle2 } from 'luci
 import { AdBanner } from './components/AdBanner';
 import { Analytics } from "@vercel/analytics/react";
 import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { SEOContent } from './components/SEOContent';
 
 export default function App() {
   const [result, setResult] = useState<GenerationResult | null>(null);
@@ -143,6 +144,9 @@ export default function App() {
 
         {/* Bottom Ad Banner (Posisi C) */}
         <AdBanner className="mt-8 mb-4" />
+        
+        {/* SEO & FAQ Section */}
+        <SEOContent />
       </main>
       ) : (
         <div className="flex-1 w-full">
