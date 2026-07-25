@@ -8,12 +8,14 @@ import { GeneratorOptions, GenerationResult, Platform, SavedHashtagSet } from '.
 import { Sparkles, Hash, Zap, AlertCircle, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { AdBanner } from './components/AdBanner';
 import { Analytics } from "@vercel/analytics/react";
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 
 export default function App() {
   const [result, setResult] = useState<GenerationResult | null>(null);
   const [lastPlatform, setLastPlatform] = useState<Platform>('instagram');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [currentView, setCurrentView] = useState<'home' | 'privacy'>('home');
 
   // Modals state
   const [showAnalyzer, setShowAnalyzer] = useState(false);
@@ -89,7 +91,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white pb-16">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white">
       <Analytics />
       {/* Header */}
       <Header
@@ -103,7 +105,8 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 space-y-8">
+      {currentView === 'home' ? (
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 space-y-8">
         {/* Top Ad Banner (Posisi A) */}
         <AdBanner className="mb-4" />
         {/* Error Notification */}
@@ -141,6 +144,16 @@ export default function App() {
         {/* Bottom Ad Banner (Posisi C) */}
         <AdBanner className="mt-8 mb-4" />
       </main>
+      ) : (
+        <div className="flex-1 w-full">
+          <PrivacyPolicy onBack={() => setCurrentView('home')} />
+        </div>
+      )}
+
+      {/* Footer */}
+      <footer className="py-8 text-center text-slate-500 text-sm mt-auto">
+         &copy; {new Date().getFullYear()} AI Hashtag Generator. <button onClick={() => { setCurrentView('privacy'); window.scrollTo(0,0); }} className="hover:text-indigo-600 underline">Kebijakan Privasi</button>
+      </footer>
 
       {/* Single Hashtag Analyzer Modal */}
       {showAnalyzer && (
