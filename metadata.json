@@ -1,0 +1,6 @@
+{
+  "name": "Hashtag Generator AI",
+  "description": "Aplikasi generator hashtag cerdas dan analisis tren hashtag untuk Instagram, TikTok, LinkedIn, Twitter, dan YouTube.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

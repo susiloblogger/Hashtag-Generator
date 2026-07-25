@@ -1,0 +1,78 @@
+import React from 'react';
+import { Hash, Sparkles, Bookmark, Zap, RefreshCw } from 'lucide-react';
+
+interface HeaderProps {
+  savedCount: number;
+  onOpenSaved: () => void;
+  onOpenAnalyzer: () => void;
+  onReset: () => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({
+  savedCount,
+  onOpenSaved,
+  onOpenAnalyzer,
+  onReset,
+}) => {
+  return (
+    <header className="h-16 bg-white/90 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-30 shrink-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        {/* Brand Logo */}
+        <div 
+          onClick={onReset} 
+          className="flex items-center gap-2.5 cursor-pointer group select-none"
+        >
+          <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center shadow-md shadow-indigo-200 group-hover:bg-indigo-700 transition-all">
+            <span className="text-white font-black text-lg">#</span>
+          </div>
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-xl font-bold tracking-tight text-slate-900">
+                TagMaster<span className="text-indigo-600">AI</span>
+              </span>
+              <span className="inline-flex items-center gap-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200/60 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                <Sparkles className="w-2.5 h-2.5 text-indigo-500" /> Pro
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 font-medium hidden sm:block">
+              Generator & Analisis Tagar Cerdas
+            </p>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            onClick={onOpenAnalyzer}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 hover:text-slate-900 rounded-full transition-colors cursor-pointer"
+            title="Analisis Hashtag Spesifik"
+          >
+            <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
+            <span className="hidden sm:inline">Cek Hashtag</span>
+          </button>
+
+          <button
+            onClick={onOpenSaved}
+            className="relative flex items-center gap-1.5 px-3.5 py-1.5 text-xs sm:text-sm font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/80 rounded-full transition-all cursor-pointer"
+          >
+            <Bookmark className="w-3.5 h-3.5 text-indigo-600 fill-indigo-100" />
+            <span>Koleksi</span>
+            {savedCount > 0 && (
+              <span className="ml-0.5 bg-indigo-600 text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">
+                {savedCount}
+              </span>
+            )}
+          </button>
+
+          <button
+            onClick={onReset}
+            className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
+            title="Mulai Baru"
+          >
+            <RefreshCw className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </header>
+  );
+};
