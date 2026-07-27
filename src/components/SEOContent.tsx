@@ -125,7 +125,7 @@ export const SEOContent: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
           {faqs.map((faq, index) => (
             <div key={index} className="flex gap-4 items-start">
-              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold text-sm">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 text-slate-700 font-bold text-sm">
                 {index + 1}
               </span>
               <div>

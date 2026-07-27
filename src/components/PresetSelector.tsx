@@ -27,9 +27,9 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset, 
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-amber-500" />
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-700">
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-700">
             Inspirasi Cepat & Niche Populer
-          </h3>
+          </h2>
         </div>
         <span className="text-[11px] text-slate-600">Klik untuk isi otomatis</span>
       </div>
