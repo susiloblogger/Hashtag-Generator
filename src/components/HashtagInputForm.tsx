@@ -174,7 +174,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
       {/* Top Banner & Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-5">
         <div>
-          <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+          <h2 className="text-xs font-semibold text-slate-600 uppercase tracking-wider">
             Buat Hashtag Baru
           </h2>
           <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight mt-1 flex items-center gap-2">
@@ -207,7 +207,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
       >
         {/* Platform Selector Tabs */}
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2.5">
             1. Platform Focus
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
@@ -239,7 +239,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* Main Input Text */}
           <div className="lg:col-span-2 space-y-2">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600">
               2. Kata Kunci & Topik Konten
             </label>
             <div className="relative">
@@ -251,14 +251,14 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
                 }}
                 placeholder="e.g. coffee shop marketing, resep masakan simpel, fotografi HP, OOTD pantai Bali..."
                 rows={4}
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 min-h-[110px] resize-none shadow-inner placeholder:text-slate-400 transition-all outline-hidden"
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 min-h-[110px] resize-none shadow-inner placeholder:text-slate-600 transition-all outline-hidden"
               />
             </div>
           </div>
 
           {/* Image Upload Area */}
           <div className="space-y-2">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600">
               3. Unggah Foto Konten (Opsional)
             </label>
             <div className="h-[110px] sm:h-[118px] border-2 border-dashed border-slate-200 hover:border-indigo-400 bg-slate-50/70 hover:bg-indigo-50/30 rounded-xl flex flex-col items-center justify-center relative transition-all group overflow-hidden">
@@ -292,7 +292,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
                   <span className="text-xs font-semibold text-slate-700">
                     Deteksi Gambar Otomatis
                   </span>
-                  <span className="text-[10px] text-slate-400 mt-0.5">
+                  <span className="text-[10px] text-slate-600 mt-0.5">
                     Objek & suasana foto
                   </span>
                 </button>
@@ -310,7 +310,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
 
         {/* Strategy Selector */}
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2.5">
             4. Strategi Penyeimbangan Tagar
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
@@ -333,7 +333,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
                     </span>
                     {isSelected && <span className="w-2 h-2 rounded-full bg-indigo-600" />}
                   </div>
-                  <p className="text-[11px] text-slate-500 leading-snug">
+                  <p className="text-[11px] text-slate-700 leading-snug">
                     {s.desc}
                   </p>
                 </button>
@@ -347,7 +347,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
           {/* Niche */}
           <div>
             <label className="block text-xs font-semibold text-slate-600 mb-1 flex items-center gap-1">
-              <Layers className="w-3.5 h-3.5 text-slate-400" />
+              <Layers className="w-3.5 h-3.5 text-slate-600" />
               Niche Konten
             </label>
             <select
@@ -370,7 +370,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
           {/* Language Target */}
           <div>
             <label className="block text-xs font-semibold text-slate-600 mb-1 flex items-center gap-1">
-              <Globe className="w-3.5 h-3.5 text-slate-400" />
+              <Globe className="w-3.5 h-3.5 text-slate-600" />
               Bahasa Tagar
             </label>
             <select
@@ -388,7 +388,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
           {/* Custom Branding Tag */}
           <div>
             <label className="block text-xs font-semibold text-slate-600 mb-1 flex items-center gap-1">
-              <Tag className="w-3.5 h-3.5 text-slate-400" />
+              <Tag className="w-3.5 h-3.5 text-slate-600" />
               Brand/Campaign Tag (Opsional)
             </label>
             <input
@@ -396,7 +396,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
               value={customBranding}
               onChange={(e) => setCustomBranding(e.target.value)}
               placeholder="e.g. KopiEnakID"
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 placeholder:text-slate-400 focus:outline-hidden focus:border-indigo-500"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 placeholder:text-slate-600 focus:outline-hidden focus:border-indigo-500"
             />
           </div>
         </div>
@@ -406,7 +406,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
           <button
             type="button"
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-800 transition-colors cursor-pointer"
           >
             <Sliders className="w-3.5 h-3.5" />
             <span>Jumlah Tagar Target ({count} Hashtag)</span>
@@ -430,7 +430,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
                 onChange={(e) => setCount(Number(e.target.value))}
                 className="w-full accent-indigo-600 cursor-pointer"
               />
-              <div className="flex justify-between text-[10px] text-slate-400">
+              <div className="flex justify-between text-[10px] text-slate-600">
                 <span>10 Tagar (Ringkas / TikTok)</span>
                 <span>20 Tagar (Standar)</span>
                 <span>30 Tagar (Maksimal Instagram)</span>

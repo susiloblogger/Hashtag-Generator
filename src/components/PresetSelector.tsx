@@ -27,11 +27,11 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset, 
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-amber-500" />
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-700">
             Inspirasi Cepat & Niche Populer
           </h3>
         </div>
-        <span className="text-[11px] text-slate-400">Klik untuk isi otomatis</span>
+        <span className="text-[11px] text-slate-600">Klik untuk isi otomatis</span>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -59,7 +59,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({ onSelectPreset, 
                 </div>
                 {isActive && <span className="w-2 h-2 rounded-full bg-indigo-600 shrink-0 ml-1" />}
               </div>
-              <p className="text-[11px] text-slate-500 line-clamp-2 leading-snug">
+              <p className="text-[11px] text-slate-700 line-clamp-2 leading-snug">
                 {preset.description}
               </p>
             </button>
