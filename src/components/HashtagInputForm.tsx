@@ -309,6 +309,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
               Niche Konten
             </label>
             <select
+              aria-label="Niche Konten"
               value={niche}
               onChange={(e) => {
                 setNiche(e.target.value);
@@ -331,6 +332,7 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
               Bahasa Tagar
             </label>
             <select
+              aria-label="Bahasa Tagar"
               value={language}
               onChange={(e) => setLanguage(e.target.value as any)}
               className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-medium text-slate-800 focus:outline-hidden focus:border-indigo-500"
