@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { GeneratorOptions, Platform, StrategyType } from '../types';
 import { POPULAR_NICHES, PresetTopic } from '../data/presets';
 import { PresetSelector } from './PresetSelector';
@@ -108,6 +108,40 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
     { id: 'all', label: 'Semua Platform', icon: <Layers className="w-4 h-4" />, color: 'bg-indigo-600 text-white' },
   ];
 
+  const webmcpSchema = {
+    tools: [
+      {
+        name: "generate_hashtags",
+        description: "Generate optimized hashtags based on topic, niche, platform, and strategy.",
+        schema: {
+          type: "object",
+          properties: {
+            promptText: { type: "string", description: "The main topic or keywords for the hashtags" },
+            platform: { type: "string", enum: ["instagram", "tiktok", "linkedin", "twitter", "youtube", "all"], description: "Target social media platform" },
+            niche: { type: "string", description: "Industry or content niche (e.g. Kuliner & Makanan, Fashion & Beauty)" },
+            strategy: { type: "string", enum: ["balanced", "high_reach", "niche_focus", "low_competition"], description: "Hashtag balancing strategy" },
+            language: { type: "string", enum: ["id", "en", "bilingual"], description: "Hashtag language" },
+            count: { type: "integer", minimum: 10, maximum: 30, description: "Number of hashtags to generate" },
+            customBranding: { type: "string", description: "Optional custom branding tag to include" }
+          },
+          required: ["promptText"]
+        }
+      }
+    ]
+  };
+
+  useEffect(() => {
+    // Imperative WebMCP tool registration
+    const nav = window.navigator as any;
+    if (nav.modelContext?.registerTool) {
+      try {
+        nav.modelContext.registerTool(webmcpSchema.tools[0]);
+      } catch (e) {
+        console.warn("Failed to register WebMCP tool", e);
+      }
+    }
+  }, []);
+
   const strategiesList: { id: StrategyType; title: string; desc: string }[] = [
     {
       id: 'balanced',
@@ -133,6 +167,10 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
 
   return (
     <div className="bg-white rounded-2xl p-6 sm:p-7 shadow-sm border border-slate-200 space-y-6">
+      <script
+        type="application/webmcp+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webmcpSchema) }}
+      />
       {/* Top Banner & Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-5">
         <div>
@@ -162,7 +200,11 @@ export const HashtagInputForm: React.FC<HashtagInputFormProps> = ({
         />
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form 
+        onSubmit={handleSubmit} 
+        className="space-y-6"
+        {...{ toolname: "generate_hashtags", tooldescription: "Generate optimized hashtags for social media content", toolautosubmit: "true" }}
+      >
         {/* Platform Selector Tabs */}
         <div>
           <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5">
